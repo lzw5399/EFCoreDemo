@@ -24,7 +24,8 @@ namespace FirstEFCoreDemo.Data
         {
             modelBuilder.Entity<Post>()
                 .Property(b => b.UpdateDate)
-                .IsRequired(false);
+                .IsRequired(false)
+                .
         }
     }
 }
