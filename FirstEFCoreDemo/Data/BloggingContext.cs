@@ -9,7 +9,7 @@ namespace FirstEFCoreDemo.Data
 {
     public class BloggingContext : DbContext
     {
-        public BloggingContext(DbContextOptions options) : base(options)
+        public BloggingContext(DbContextOptions<BloggingContext> options) : base(options)
         {
 
         }
@@ -17,5 +17,14 @@ namespace FirstEFCoreDemo.Data
         public DbSet<Blog> Blogs { get; set; }
 
         public DbSet<Post> Posts { get; set; }
+
+        public DbSet<BlogMetaData> BlogMetaDatas { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Post>()
+                .Property(b => b.UpdateDate)
+                .IsRequired(false);
+        }
     }
 }

@@ -18,6 +18,8 @@ namespace FirstEFCoreDemo.Models
 
         public DateTime CreateDate { get; set; }
 
+        public DateTime? UpdateDate { get; set; }
+
         // 外键
         public int BlogId { get; set; }
     }

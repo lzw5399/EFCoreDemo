@@ -3,14 +3,16 @@ using System;
 using FirstEFCoreDemo.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FirstEFCoreDemo.Migrations
 {
     [DbContext(typeof(BloggingContext))]
-    partial class BloggingContextModelSnapshot : ModelSnapshot
+    [Migration("20190626132413_addUpdateDateForPostNull")]
+    partial class addUpdateDateForPostNull
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,18 +28,6 @@ namespace FirstEFCoreDemo.Migrations
                     b.HasKey("BlogId");
 
                     b.ToTable("Blogs");
-                });
-
-            modelBuilder.Entity("FirstEFCoreDemo.Models.BlogMetaData", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Content");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("BlogMetaDatas");
                 });
 
             modelBuilder.Entity("FirstEFCoreDemo.Models.Post", b =>
