@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,6 +15,7 @@ namespace FirstEFCoreDemo.Models
 
         public string Title { get; set; }
 
+        [ConcurrencyCheck]
         public string Content { get; set; }
 
         public DateTime CreateDate { get; set; }

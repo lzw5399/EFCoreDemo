@@ -10,7 +10,7 @@ namespace FirstEFCoreDemo.Models
     {
         public int Id { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Content { get; set; }
     }
 }
