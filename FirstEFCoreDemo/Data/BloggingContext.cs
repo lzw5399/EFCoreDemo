@@ -25,6 +25,9 @@ namespace FirstEFCoreDemo.Data
             modelBuilder.Entity<Post>()
                 .Property(b => b.UpdateDate)
                 .IsRequired(false);
+
+            modelBuilder.Entity<Blog>()
+                .Property<bool>("IsDelete");
         }
     }
 }
