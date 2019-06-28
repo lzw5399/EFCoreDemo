@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -23,6 +24,10 @@ namespace FirstEFCoreDemo.Models
         public DateTime? UpdateDate { get; set; }
 
         // 外键
-        public int BlogId { get; set; }
+        // public int BlogId { get; set; }
+        public int FFF { get; set; }
+
+        [ForeignKey(nameof(FFF))]
+        public Blog Blog { get; set; }
     }
 }

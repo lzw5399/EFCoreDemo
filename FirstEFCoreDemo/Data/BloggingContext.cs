@@ -22,9 +22,9 @@ namespace FirstEFCoreDemo.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Post>()
-                .Property(b => b.UpdateDate)
-                .IsRequired(false);
+            //modelBuilder.Entity<Post>()
+            //    .Property(b => b.UpdateDate)
+            //    .IsRequired(false);
 
             modelBuilder.Entity<Blog>()
                 .Property<bool>("IsDelete");

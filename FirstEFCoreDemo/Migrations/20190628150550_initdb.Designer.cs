@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FirstEFCoreDemo.Migrations
 {
     [DbContext(typeof(BloggingContext))]
-    [Migration("20190626140255_removeBlogMetaData")]
-    partial class removeBlogMetaData
+    [Migration("20190628150550_initdb")]
+    partial class initdb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,6 +22,8 @@ namespace FirstEFCoreDemo.Migrations
                 {
                     b.Property<int>("BlogId")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<bool>("IsDelete");
 
                     b.Property<string>("Url");
 
@@ -35,7 +37,8 @@ namespace FirstEFCoreDemo.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Content");
+                    b.Property<string>("Content")
+                        .ValueGeneratedOnAdd();
 
                     b.HasKey("Id");
 
@@ -47,11 +50,12 @@ namespace FirstEFCoreDemo.Migrations
                     b.Property<int>("PostId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("BlogId");
-
-                    b.Property<string>("Content");
+                    b.Property<string>("Content")
+                        .IsConcurrencyToken();
 
                     b.Property<DateTime>("CreateDate");
+
+                    b.Property<int>("FFF");
 
                     b.Property<string>("Title");
 
@@ -59,16 +63,16 @@ namespace FirstEFCoreDemo.Migrations
 
                     b.HasKey("PostId");
 
-                    b.HasIndex("BlogId");
+                    b.HasIndex("FFF");
 
                     b.ToTable("Posts");
                 });
 
             modelBuilder.Entity("FirstEFCoreDemo.Models.Post", b =>
                 {
-                    b.HasOne("FirstEFCoreDemo.Models.Blog")
+                    b.HasOne("FirstEFCoreDemo.Models.Blog", "Blog")
                         .WithMany("Posts")
-                        .HasForeignKey("BlogId")
+                        .HasForeignKey("FFF")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
