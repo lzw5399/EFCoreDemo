@@ -28,6 +28,11 @@ namespace FirstEFCoreDemo.Data
              
             modelBuilder.Entity<Blog>()
                 .Property<bool>("IsDelete");
+
+            modelBuilder.Entity<Blog>()
+                .HasMany(it => it.Posts)
+                .WithOne(it => it.Blog)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
