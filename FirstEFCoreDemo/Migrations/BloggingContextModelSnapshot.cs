@@ -21,6 +21,9 @@ namespace FirstEFCoreDemo.Migrations
                     b.Property<int>("BlogId")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("BeiYongJian")
+                        .IsRequired();
+
                     b.Property<string>("FirstName")
                         .HasMaxLength(20);
 
@@ -32,6 +35,8 @@ namespace FirstEFCoreDemo.Migrations
                     b.Property<string>("Url");
 
                     b.HasKey("BlogId");
+
+                    b.HasAlternateKey("BeiYongJian");
 
                     b.HasIndex("Url")
                         .IsUnique();

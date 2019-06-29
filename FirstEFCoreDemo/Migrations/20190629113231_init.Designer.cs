@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FirstEFCoreDemo.Migrations
 {
     [DbContext(typeof(BloggingContext))]
-    [Migration("20190629110605_changeToUnique")]
-    partial class changeToUnique
+    [Migration("20190629113231_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,6 +23,9 @@ namespace FirstEFCoreDemo.Migrations
                     b.Property<int>("BlogId")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("BeiYongJian")
+                        .IsRequired();
+
                     b.Property<string>("FirstName")
                         .HasMaxLength(20);
 
@@ -34,6 +37,8 @@ namespace FirstEFCoreDemo.Migrations
                     b.Property<string>("Url");
 
                     b.HasKey("BlogId");
+
+                    b.HasAlternateKey("BeiYongJian");
 
                     b.HasIndex("Url")
                         .IsUnique();

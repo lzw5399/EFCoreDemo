@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FirstEFCoreDemo.Migrations
 {
-    public partial class modifyMaxLength : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -29,11 +29,13 @@ namespace FirstEFCoreDemo.Migrations
                     Url = table.Column<string>(nullable: true),
                     FirstName = table.Column<string>(maxLength: 20, nullable: true),
                     LastName = table.Column<string>(maxLength: 20, nullable: true),
+                    BeiYongJian = table.Column<string>(nullable: false),
                     IsDelete = table.Column<short>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Blogs", x => x.BlogId);
+                    table.UniqueConstraint("AK_Blogs_BeiYongJian", x => x.BeiYongJian);
                 });
 
             migrationBuilder.CreateTable(
@@ -68,7 +70,8 @@ namespace FirstEFCoreDemo.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Blogs_FirstName_LastName",
                 table: "Blogs",
-                columns: new[] { "FirstName", "LastName" });
+                columns: new[] { "FirstName", "LastName" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Posts_FFF",

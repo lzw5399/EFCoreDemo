@@ -52,6 +52,10 @@ namespace FirstEFCoreDemo.Data
             modelBuilder.Entity<Blog>()
                 .Property(it => it.LastName)
                 .HasMaxLength(20);
+
+            // 备用键的配置
+            modelBuilder.Entity<Blog>()
+                .HasAlternateKey(it => it.BeiYongJian);
         }
     }
 }

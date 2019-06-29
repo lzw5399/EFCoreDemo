@@ -19,5 +19,8 @@ namespace FirstEFCoreDemo.Models
         public string LastName { get; set; }
 
         public ICollection<Post> Posts { get; set; }
+
+        /// <summary>备用键专用</summary>
+        public string BeiYongJian { get; set; }
     }
 }
