@@ -3,14 +3,16 @@ using System;
 using FirstEFCoreDemo.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FirstEFCoreDemo.Migrations
 {
     [DbContext(typeof(BloggingContext))]
-    partial class BloggingContextModelSnapshot : ModelSnapshot
+    [Migration("20190629110447_modifyMaxLength")]
+    partial class modifyMaxLength
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,8 +38,7 @@ namespace FirstEFCoreDemo.Migrations
                     b.HasIndex("Url")
                         .IsUnique();
 
-                    b.HasIndex("FirstName", "LastName")
-                        .IsUnique();
+                    b.HasIndex("FirstName", "LastName");
 
                     b.ToTable("Blogs");
                 });

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FirstEFCoreDemo.Migrations
 {
-    public partial class initdb : Migration
+    public partial class modifyMaxLength : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,6 +27,8 @@ namespace FirstEFCoreDemo.Migrations
                     BlogId = table.Column<int>(nullable: false)
                         .Annotation("MySQL:AutoIncrement", true),
                     Url = table.Column<string>(nullable: true),
+                    FirstName = table.Column<string>(maxLength: 20, nullable: true),
+                    LastName = table.Column<string>(maxLength: 20, nullable: true),
                     IsDelete = table.Column<short>(nullable: false)
                 },
                 constraints: table =>
@@ -56,6 +58,17 @@ namespace FirstEFCoreDemo.Migrations
                         principalColumn: "BlogId",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Blogs_Url",
+                table: "Blogs",
+                column: "Url",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Blogs_FirstName_LastName",
+                table: "Blogs",
+                columns: new[] { "FirstName", "LastName" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Posts_FFF",

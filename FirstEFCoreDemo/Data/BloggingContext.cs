@@ -25,14 +25,33 @@ namespace FirstEFCoreDemo.Data
             //modelBuilder.Entity<Post>()
             //    .Property(b => b.UpdateDate)
             //    .IsRequired(false);
-             
+
+            // 隐藏属性的配置（实体类中没有）
             modelBuilder.Entity<Blog>()
                 .Property<bool>("IsDelete");
 
+            // Fluent API配置表关系
             modelBuilder.Entity<Blog>()
                 .HasMany(it => it.Posts)
-                .WithOne(it => it.Blog)
-                .OnDelete(DeleteBehavior.Cascade);
+                .WithOne(it => it.Blog);
+
+            // 唯一索引
+            modelBuilder.Entity<Blog>()
+                .HasIndex(it => it.Url)
+                .IsUnique();
+
+            // 组合索引
+            modelBuilder.Entity<Blog>()
+                .HasIndex(it => new { it.FirstName, it.LastName })
+                .IsUnique();
+
+            // 为这两个字段限制最大长度，不然建索引报错
+            modelBuilder.Entity<Blog>()
+                .Property(it => it.FirstName)
+                .HasMaxLength(20);
+            modelBuilder.Entity<Blog>()
+                .Property(it => it.LastName)
+                .HasMaxLength(20);
         }
     }
 }
