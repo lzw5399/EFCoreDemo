@@ -36,6 +36,12 @@ namespace EFCoreDemo2.Data
             modelBuilder
                 .Entity<Email>()
                 .OwnsOne(e => e.EmailContent);
+
+            // 私有字段配置
+            modelBuilder
+                .Entity<Email>()
+                .Property(it => it.Test)
+                .HasField("_test");
         }
     }
 }
