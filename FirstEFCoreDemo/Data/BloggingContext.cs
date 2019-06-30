@@ -1,4 +1,5 @@
-﻿using FirstEFCoreDemo.Models;
+﻿using EFCoreDemo.Model.Inheritance;
+using FirstEFCoreDemo.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,15 @@ namespace FirstEFCoreDemo.Data
         public DbSet<Post> Posts { get; set; }
 
         public DbSet<BlogMetaData> BlogMetaDatas { get; set; }
+
+        // 测试继承关系
+        public DbSet<HuaWei> HuaWeis { get; set; }
+
+        // 测试继承关系
+        // public DbSet<Phone> Phones { get; set; }
+
+        // 测试继承关系
+        public DbSet<XiaoMi> XiaoMis { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -56,6 +66,27 @@ namespace FirstEFCoreDemo.Data
             // 备用键的配置
             modelBuilder.Entity<Blog>()
                 .HasAlternateKey(it => it.BeiYongJian);
+
+            // 显式指定父类,【只会生成一张表】
+            modelBuilder.Entity<XiaoMi>()
+                .HasBaseType<Phone>();
+            modelBuilder.Entity<HuaWei>()
+                .HasBaseType<Phone>();
+
+            modelBuilder.Entity<Phone>()
+                .HasDiscriminator<string>("Type")
+                .HasValue<Phone>("P")
+                .HasValue<XiaoMi>("X")
+                .HasValue<HuaWei>("H");
+
+            // 显式指定父类，生成多张表
+            //modelBuilder.Entity<XiaoMi>()
+            //    .HasBaseType((Type)null)
+            //    .HasKey(it => it.PhoneId);
+
+            //modelBuilder.Entity<HuaWei>()
+            //    .HasBaseType((Type)null)
+            //    .HasKey(it => it.PhoneId);
         }
     }
 }

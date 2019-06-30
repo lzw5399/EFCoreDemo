@@ -16,6 +16,23 @@ namespace FirstEFCoreDemo.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
 
+            modelBuilder.Entity("EFCoreDemo.Model.Inheritance.Phone", b =>
+                {
+                    b.Property<int>("PhoneId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("Price");
+
+                    b.Property<string>("Type")
+                        .IsRequired();
+
+                    b.HasKey("PhoneId");
+
+                    b.ToTable("Phone");
+
+                    b.HasDiscriminator<string>("Type").HasValue("Phone");
+                });
+
             modelBuilder.Entity("FirstEFCoreDemo.Models.Blog", b =>
                 {
                     b.Property<int>("BlogId")
@@ -81,6 +98,24 @@ namespace FirstEFCoreDemo.Migrations
                     b.HasIndex("FFF");
 
                     b.ToTable("Posts");
+                });
+
+            modelBuilder.Entity("EFCoreDemo.Model.Inheritance.HuaWei", b =>
+                {
+                    b.HasBaseType("EFCoreDemo.Model.Inheritance.Phone");
+
+                    b.Property<string>("HuaWeiContent");
+
+                    b.HasDiscriminator().HasValue("HuaWei");
+                });
+
+            modelBuilder.Entity("EFCoreDemo.Model.Inheritance.XiaoMi", b =>
+                {
+                    b.HasBaseType("EFCoreDemo.Model.Inheritance.Phone");
+
+                    b.Property<string>("XiaoMiContent");
+
+                    b.HasDiscriminator().HasValue("XiaoMi");
                 });
 
             modelBuilder.Entity("FirstEFCoreDemo.Models.Post", b =>

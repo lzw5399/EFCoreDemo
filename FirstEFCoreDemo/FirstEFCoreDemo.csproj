@@ -28,4 +28,9 @@
     <Folder Include="DbFirstProcess\" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <ProjectReference Include="..\EFCoreDemo.Model\EFCoreDemo.Model.csproj" />
+  </ItemGroup>
+
 </Project>

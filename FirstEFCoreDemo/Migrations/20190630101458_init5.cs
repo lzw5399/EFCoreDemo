@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FirstEFCoreDemo.Migrations
 {
-    public partial class init : Migration
+    public partial class init5 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -36,6 +36,22 @@ namespace FirstEFCoreDemo.Migrations
                 {
                     table.PrimaryKey("PK_Blogs", x => x.BlogId);
                     table.UniqueConstraint("AK_Blogs_BeiYongJian", x => x.BeiYongJian);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Phone",
+                columns: table => new
+                {
+                    PhoneId = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:AutoIncrement", true),
+                    Price = table.Column<int>(nullable: false),
+                    Type = table.Column<string>(nullable: false),
+                    HuaWeiContent = table.Column<string>(nullable: true),
+                    XiaoMiContent = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Phone", x => x.PhoneId);
                 });
 
             migrationBuilder.CreateTable(
@@ -83,6 +99,9 @@ namespace FirstEFCoreDemo.Migrations
         {
             migrationBuilder.DropTable(
                 name: "BlogMetaDatas");
+
+            migrationBuilder.DropTable(
+                name: "Phone");
 
             migrationBuilder.DropTable(
                 name: "Posts");
