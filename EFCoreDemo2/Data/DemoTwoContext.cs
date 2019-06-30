@@ -1,5 +1,7 @@
-﻿using EFCoreDemo2.Models;
+﻿using EFCoreDemo.Model.Converter;
+using EFCoreDemo2.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +14,8 @@ namespace EFCoreDemo2.Data
         public DbSet<Order> Orders { get; set; }
 
         public DbSet<Email> Emails { get; set; }
+
+        public DbSet<Book> Books { get; set; }
 
         public BloggingContext(DbContextOptions<BloggingContext> options) : base(options)
         {
@@ -42,6 +46,38 @@ namespace EFCoreDemo2.Data
                 .Entity<Email>()
                 .Property(it => it.Test)
                 .HasField("_test");
+
+            // 最原始的值转换配置
+            //modelBuilder
+            //    .Entity<Book>()
+            //    .Property(b => b.Type)
+            //    .HasConversion(
+            //        s => s.ToString(),
+            //        g => (BookType)Enum.Parse(typeof(BookType), g)
+            //    );
+
+            // 使用ValueConverter类的值转换器
+            //var converter1 = new ValueConverter<BookType, string>(
+            //        s => s.ToString(),
+            //        g => (BookType)Enum.Parse(typeof(BookType), g);
+
+            //modelBuilder
+            //    .Entity<Book>()
+            //    .Property(b => b.Type)
+            //    .HasConversion(converter1);
+
+            //// 使用内置的值转换器类进行转换
+            //var converter2 = new EnumToStringConverter<BookType>();
+            //modelBuilder
+            //    .Entity<Book>()
+            //    .Property(b => b.Type)
+            //    .HasConversion(converter2);
+
+            // 使用预定义的转换
+            modelBuilder
+                .Entity<Book>()
+                .Property(b => b.Type)
+                .HasConversion<string>();
         }
     }
 }

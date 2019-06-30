@@ -8,6 +8,10 @@
   <ItemGroup>
     <Compile Remove="Migrations\20190630135455_private.cs" />
     <Compile Remove="Migrations\20190630135455_private.Designer.cs" />
+    <Compile Remove="Migrations\20190630144238_addEnumToString2.cs" />
+    <Compile Remove="Migrations\20190630144238_addEnumToString2.Designer.cs" />
+    <Compile Remove="Migrations\20190630144324_addEnumToString3.cs" />
+    <Compile Remove="Migrations\20190630144324_addEnumToString3.Designer.cs" />
   </ItemGroup>
 
 
@@ -15,6 +19,11 @@
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.16" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\EFCoreDemo.Model\EFCoreDemo.Model.csproj" />
   </ItemGroup>
 
 </Project>
