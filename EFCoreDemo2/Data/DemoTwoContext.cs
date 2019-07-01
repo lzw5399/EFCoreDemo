@@ -19,7 +19,6 @@ namespace EFCoreDemo2.Data
 
         public BloggingContext(DbContextOptions<BloggingContext> options) : base(options)
         {
-
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -78,6 +77,10 @@ namespace EFCoreDemo2.Data
                 .Entity<Book>()
                 .Property(b => b.Type)
                 .HasConversion<string>();
+
+            modelBuilder
+                .Entity<Book>()
+                .HasData(new Book { Id = 7, Name = "233", Type = BookType.Science }, new { Id = 6, Name = "测试匿名类", Type = BookType.Classic });
         }
     }
 }

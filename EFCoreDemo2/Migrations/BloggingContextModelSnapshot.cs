@@ -28,6 +28,20 @@ namespace EFCoreDemo2.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Books");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 7,
+                            Name = "233",
+                            Type = "Science"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "测试匿名类",
+                            Type = "Classic"
+                        });
                 });
 
             modelBuilder.Entity("EFCoreDemo2.Models.Email", b =>
