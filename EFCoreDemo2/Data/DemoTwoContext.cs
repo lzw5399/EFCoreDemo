@@ -1,4 +1,5 @@
 ﻿using EFCoreDemo.Model.Converter;
+using EFCoreDemo.Model.Schemas;
 using EFCoreDemo2.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
@@ -84,6 +85,11 @@ namespace EFCoreDemo2.Data
                     new Book { Id = 7, Name = "233", Type = BookType.Science },
                     new { Id = 6, Name = "测试匿名类", Type = BookType.Classic }
                 );
+
+            // 表名和架构的配置
+            modelBuilder
+                .Entity<Schema>()
+                .ToTable(name: "Schemas", schema: "tt");
         }
     }
 }
