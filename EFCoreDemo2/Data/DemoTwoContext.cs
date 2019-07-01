@@ -80,7 +80,10 @@ namespace EFCoreDemo2.Data
 
             modelBuilder
                 .Entity<Book>()
-                .HasData(new Book { Id = 7, Name = "233", Type = BookType.Science }, new { Id = 6, Name = "测试匿名类", Type = BookType.Classic });
+                .HasData(
+                    new Book { Id = 7, Name = "233", Type = BookType.Science },
+                    new { Id = 6, Name = "测试匿名类", Type = BookType.Classic }
+                );
         }
     }
 }
