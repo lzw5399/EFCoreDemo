@@ -30,7 +30,7 @@ namespace EFCoreDemo3.Data
             //        SELECT b.Name, Count(p.PostId) as PostCount
             //        FROM Blogs b
             //        JOIN Posts p on p.BlogId = b.BlogId
-            //        GROUP BY b.Name");
+            ///        GROUP BY b.Name");
 
             // 查询类型的配置
             modelBuilder
