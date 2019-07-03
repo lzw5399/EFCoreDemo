@@ -12,7 +12,7 @@ namespace EFCoreDemo3.Data
 
         public DbSet<EFCoreDemo.Model.QueryResult.Post> Posts { get; set; }
 
-        public DemoThreeContext(DbContextOptions<DemoThreeContext> options) : base(options)
+        public DemoThreeContext(DbContextOptions options) : base(options)
         {
         }
 

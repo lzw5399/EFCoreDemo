@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCoreDemo.Model", "EFCoreD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCoreDemo2", "EFCoreDemo2\EFCoreDemo2.csproj", "{1AC235FF-BCB7-45C1-9F66-7282FB2479ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCoreDemo3", "EFCoreDemo3\EFCoreDemo3.csproj", "{D172392E-6CE0-48E7-A627-CB2AC98D5230}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCoreDemo3", "EFCoreDemo3\EFCoreDemo3.csproj", "{D172392E-6CE0-48E7-A627-CB2AC98D5230}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo3", "Demo3", "{755E9264-B59E-47EF-A582-83E453430851}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbMigrationForDemo3", "DbMigrationForDemo3\DbMigrationForDemo3.csproj", "{9E5A7610-E3D5-44AC-A53F-B844D285A76E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +37,17 @@ Global
 		{D172392E-6CE0-48E7-A627-CB2AC98D5230}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D172392E-6CE0-48E7-A627-CB2AC98D5230}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D172392E-6CE0-48E7-A627-CB2AC98D5230}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E5A7610-E3D5-44AC-A53F-B844D285A76E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E5A7610-E3D5-44AC-A53F-B844D285A76E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E5A7610-E3D5-44AC-A53F-B844D285A76E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E5A7610-E3D5-44AC-A53F-B844D285A76E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D172392E-6CE0-48E7-A627-CB2AC98D5230} = {755E9264-B59E-47EF-A582-83E453430851}
+		{9E5A7610-E3D5-44AC-A53F-B844D285A76E} = {755E9264-B59E-47EF-A582-83E453430851}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2009B1B8-F4F8-47BD-AB9B-CF97EB980B2A}
