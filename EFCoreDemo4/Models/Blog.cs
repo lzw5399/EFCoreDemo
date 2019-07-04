@@ -10,7 +10,6 @@ namespace EFCoreDemo4.Models
         public Blog()
         {
             var x = Enumerable.Range(1, 100);
-
         }
     }
 }
