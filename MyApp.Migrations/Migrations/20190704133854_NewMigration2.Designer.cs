@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace EFCoreDemo3.Migrations
+namespace MyApp.Migrations.Migrations
 {
     [DbContext(typeof(DemoThreeContext))]
-    [Migration("20190702141502_init5")]
-    partial class init5
+    [Migration("20190704133854_NewMigration2")]
+    partial class NewMigration2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

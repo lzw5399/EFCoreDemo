@@ -1,14 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace EFCoreDemo3.Migrations
+namespace MyApp.Migrations.Migrations
 {
-    public partial class init5 : Migration
+    public partial class NewMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropSequence(
-                name: "sequ");
-
             migrationBuilder.CreateTable(
                 name: "Blogs",
                 columns: table => new
@@ -21,6 +18,19 @@ namespace EFCoreDemo3.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Blogs", x => x.BlogId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Sequencesses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:AutoIncrement", true),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Sequencesses", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -56,12 +66,10 @@ namespace EFCoreDemo3.Migrations
                 name: "Posts");
 
             migrationBuilder.DropTable(
-                name: "Blogs");
+                name: "Sequencesses");
 
-            migrationBuilder.CreateSequence<int>(
-                name: "sequ",
-                startValue: 1000L,
-                incrementBy: 5);
+            migrationBuilder.DropTable(
+                name: "Blogs");
         }
     }
 }

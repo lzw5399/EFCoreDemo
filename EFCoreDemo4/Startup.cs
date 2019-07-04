@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EFCoreDemo3.Data;
+using EFCoreDemo4.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace EFCoreDemo3
+namespace EFCoreDemo4
 {
     public class Startup
     {
@@ -32,9 +32,8 @@ namespace EFCoreDemo3
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContextPool<DemoThreeContext>(it =>
-             it.UseMySQL(Configuration.GetConnectionString("aliyun_mysql"),
-                x => x.MigrationsAssembly("MyApp.Migrations")));
+            services.AddDbContextPool<DemoFourContext>(it =>
+                 it.UseMySql(Configuration.GetConnectionString("aliyun_mysql")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
